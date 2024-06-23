@@ -37,7 +37,7 @@ def user_input_features():
                                  format_func=lambda x: ["Upsloping", "Flat", "Downsloping"][x])
     ca = st.sidebar.selectbox("Number of Major Vessels (ca)", options=[0, 1, 2, 3, 4])
     thal = st.sidebar.selectbox("Thalassemia (thal)", options=[0, 1, 2, 3], 
-                                format_func=lambda x: ["Normal", "Fixed Defect", "Reversable Defect"][x])
+                                format_func=lambda x: ["Normal", "Fixed Defect", "Reversable Defect", "Unknown"][x])
     
     data = {
         'age': age,
