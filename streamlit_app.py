@@ -1,21 +1,14 @@
 import streamlit as st
 import pandas as pd
 import joblib
-
-# Load the model
 model = joblib.load('best_heart_disease_model.pkl')
-
-# Page configuration
 st.set_page_config(page_title="Heart Disease Prediction", layout="wide")
 
-# App title and description
 st.title("Heart Disease Prediction Application")
 st.write("""
     This application uses a machine learning model to predict the likelihood of heart disease based on user input. 
     Fill in the details below and click 'Predict' to see the results.
 """)
-
-# Function to create a sidebar for user input
 def user_input_features():
     st.sidebar.header('User Input Parameters')
     
@@ -57,15 +50,11 @@ def user_input_features():
     
     features = pd.DataFrame(data, index=[0])
     return features
-
-# Get user input
 input_data = user_input_features()
 
-# Main panel
 st.header('Specified Input parameters')
 st.write(input_data)
 
-# Prediction
 if st.button("Predict"):
     try:
         prediction = model.predict(input_data)
@@ -77,7 +66,6 @@ if st.button("Predict"):
     except Exception as e:
         st.error(f"Error making prediction: {e}")
 
-# Footer
 st.sidebar.info("""
     This application was built using a machine learning model trained on heart disease data.
     The model predicts the likelihood of heart disease based on the input parameters provided.
